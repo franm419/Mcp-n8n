@@ -1,0 +1,15 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Carpetas de caché
+__pycache__/
+*.pyc
+
+# Configuración del editor
+.vscode/
+.idea/
+
+# Archivos temporales
+*.log
+*.tmp

@@ -1,0 +1,140 @@
+{
+  "name": "MCP_Client",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -120,
+        0
+      ],
+      "id": "8522fcc2-728c-4ca8-a6c6-b345edcdfe44",
+      "name": "When chat message received",
+      "webhookId": "072db600-aef0-4e17-8fe4-d4ddfcabf933"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.8,
+      "position": [
+        180,
+        0
+      ],
+      "id": "2bf812d7-fb4f-40ec-8a97-aad8290ba3c2",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4o-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        220
+      ],
+      "id": "6adf1462-bbbd-4c55-be62-158322e1c400",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "UdTbev0DIFV1AlM7",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://ivanalsigo1.app.n8n.cloud/mcp/f997212c-3bc9-447e-9b4e-9182ec609993/sse"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        660,
+        260
+      ],
+      "id": "af145762-8603-4eb1-9dec-6ca3194b6e88",
+      "name": "Gmail"
+    },
+    {
+      "parameters": {
+        "sseEndpoint": "https://ivanalsigo1.app.n8n.cloud/mcp/e0c04bbd-3863-44a8-8815-97c1942e595d/sse"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1,
+      "position": [
+        460,
+        260
+      ],
+      "id": "0e751178-b513-473d-97d8-6c6e9fcc3b57",
+      "name": "Airtable"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Airtable": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "e2bd27e6-5902-4dd6-8f28-b6a80ef7ad64",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "441974d4e0f72ec45c8b7dfa5e703be3b4cc1bd2f5d4b0f5cc7ce971159ca7cb"
+  },
+  "id": "ZBZ6Nj3jAxbofSuv",
+  "tags": []
+}

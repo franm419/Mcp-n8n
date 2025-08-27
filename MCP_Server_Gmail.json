@@ -1,0 +1,172 @@
+{
+  "name": "MCP_Server_Gmail",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "f997212c-3bc9-447e-9b4e-9182ec609993"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "e7ca6813-58a3-47d4-a98a-8a038e82c1ad",
+      "name": "MCP Server Trigger",
+      "webhookId": "f997212c-3bc9-447e-9b4e-9182ec609993"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        -300,
+        320
+      ],
+      "id": "de28869d-3f10-4e72-abfe-f79f656987c1",
+      "name": "EnviarEmail",
+      "webhookId": "384ffbf5-ba8d-4782-9adb-630549918535",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "8GmrMvcm2oaPqWSY",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "message": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Message', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        -80,
+        320
+      ],
+      "id": "8ea8c184-46fd-4f16-9cab-edf575040a34",
+      "name": "CrearBorrador",
+      "webhookId": "8961d65c-f404-452e-b4d1-c5473320bd47",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "8GmrMvcm2oaPqWSY",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "getAll",
+        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
+        "simple": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Simplify', ``, 'boolean') }}",
+        "filters": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        140,
+        320
+      ],
+      "id": "7b40a4ef-4550-4e19-aa22-64e21f476bcb",
+      "name": "ObtenerEmails",
+      "webhookId": "f3b61ead-478c-4e2b-b63f-c04de9b2687d",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "8GmrMvcm2oaPqWSY",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "draft",
+        "operation": "getAll",
+        "returnAll": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Return_All', ``, 'boolean') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmailTool",
+      "typeVersion": 2.1,
+      "position": [
+        400,
+        320
+      ],
+      "id": "0e440689-ed5a-4649-8e81-5ea4d5663506",
+      "name": "LeerBorradores",
+      "webhookId": "5cd1acd2-88b0-47fd-b01f-a875e7e60517",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "8GmrMvcm2oaPqWSY",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "EnviarEmail": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CrearBorrador": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ObtenerEmails": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LeerBorradores": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b0197b34-8670-4ebe-b0d6-605bc128f34b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "441974d4e0f72ec45c8b7dfa5e703be3b4cc1bd2f5d4b0f5cc7ce971159ca7cb"
+  },
+  "id": "2JkAgJYlT6YI762x",
+  "tags": []
+}

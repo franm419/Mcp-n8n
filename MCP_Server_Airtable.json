@@ -1,0 +1,594 @@
+{
+  "name": "MCP_Server_Airtable",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "e0c04bbd-3863-44a8-8815-97c1942e595d"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        -140,
+        0
+      ],
+      "id": "65c90e00-9c23-45e2-acaf-ed7cbd11b4f1",
+      "name": "MCP Server Trigger",
+      "webhookId": "e0c04bbd-3863-44a8-8815-97c1942e595d"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appt3DflnEnQ2rFph",
+          "mode": "list",
+          "cachedResultName": "Centro_Bienestar",
+          "cachedResultUrl": "https://airtable.com/appt3DflnEnQ2rFph"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl20zkocgV5ORKNM",
+          "mode": "list",
+          "cachedResultName": "Servicios",
+          "cachedResultUrl": "https://airtable.com/appt3DflnEnQ2rFph/tbl20zkocgV5ORKNM"
+        },
+        "filterByFormula": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Filter_By_Formula', ``, 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        -160,
+        240
+      ],
+      "id": "19115706-d9d2-4c7e-983e-274d5799950a",
+      "name": "ObtenerRegistros",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "S91DRU0IxI6kIZjm",
+          "name": "Airtable Token CentroBienestar"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appt3DflnEnQ2rFph",
+          "mode": "list",
+          "cachedResultName": "Centro_Bienestar",
+          "cachedResultUrl": "https://airtable.com/appt3DflnEnQ2rFph"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl20zkocgV5ORKNM",
+          "mode": "list",
+          "cachedResultName": "Servicios",
+          "cachedResultUrl": "https://airtable.com/appt3DflnEnQ2rFph/tbl20zkocgV5ORKNM"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Nombre del Servicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre_del_Servicio', ``, 'string') }}",
+            "Duración (minutos)": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Duraci_n__minutos_', ``, 'number') }}",
+            "Precio (Euros)": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Precio__Euros_', ``, 'number') }}",
+            "Especialista": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Especialista', ``, 'string') }}",
+            "Disponibilidad": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Disponibilidad', ``, 'string') }}",
+            "Link de Reserva": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Link_de_Reserva', ``, 'string') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Nombre del Servicio",
+              "displayName": "Nombre del Servicio",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Tipo",
+              "displayName": "Tipo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Masaje",
+                  "value": "Masaje"
+                },
+                {
+                  "name": "Terapia Energética",
+                  "value": "Terapia Energética"
+                },
+                {
+                  "name": "Clase Grupal",
+                  "value": "Clase Grupal"
+                },
+                {
+                  "name": "Terapia Manual",
+                  "value": "Terapia Manual"
+                },
+                {
+                  "name": "Terapia Alternativa",
+                  "value": "Terapia Alternativa"
+                },
+                {
+                  "name": "Terapia Tradicional",
+                  "value": "Terapia Tradicional"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Duración (minutos)",
+              "displayName": "Duración (minutos)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Precio (Euros)",
+              "displayName": "Precio (Euros)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Especialista",
+              "displayName": "Especialista",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Disponibilidad",
+              "displayName": "Disponibilidad",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "Lunes a Viernes",
+                  "value": "Lunes a Viernes"
+                },
+                {
+                  "name": "Martes y Jueves",
+                  "value": "Martes y Jueves"
+                },
+                {
+                  "name": "Lunes",
+                  "value": "Lunes"
+                },
+                {
+                  "name": "Miércoles y Viernes",
+                  "value": "Miércoles y Viernes"
+                },
+                {
+                  "name": "Lunes a Sábado",
+                  "value": "Lunes a Sábado"
+                },
+                {
+                  "name": "Todos los días",
+                  "value": "Todos los días"
+                },
+                {
+                  "name": "Martes",
+                  "value": "Martes"
+                },
+                {
+                  "name": "Jueves y Sábado",
+                  "value": "Jueves y Sábado"
+                },
+                {
+                  "name": "Lunes y Viernes",
+                  "value": "Lunes y Viernes"
+                },
+                {
+                  "name": "Sábados y Domingos",
+                  "value": "Sábados y Domingos"
+                },
+                {
+                  "name": "Viernes y Domingo",
+                  "value": "Viernes y Domingo"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Ubicación",
+              "displayName": "Ubicación",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Sala 1",
+                  "value": "Sala 1"
+                },
+                {
+                  "name": "Sala 2",
+                  "value": "Sala 2"
+                },
+                {
+                  "name": "Sala Yoga",
+                  "value": "Sala Yoga"
+                },
+                {
+                  "name": "Sala 3",
+                  "value": "Sala 3"
+                },
+                {
+                  "name": "Sala Zen",
+                  "value": "Sala Zen"
+                },
+                {
+                  "name": "Sala Pilates",
+                  "value": "Sala Pilates"
+                },
+                {
+                  "name": "Sala Terapias",
+                  "value": "Sala Terapias"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Link de Reserva",
+              "displayName": "Link de Reserva",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        40,
+        240
+      ],
+      "id": "97dcb4ec-5e23-4d69-864f-3af56416959f",
+      "name": "CrearRegistro",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "S91DRU0IxI6kIZjm",
+          "name": "Airtable Token CentroBienestar"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appt3DflnEnQ2rFph",
+          "mode": "list",
+          "cachedResultName": "Centro_Bienestar",
+          "cachedResultUrl": "https://airtable.com/appt3DflnEnQ2rFph"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl20zkocgV5ORKNM",
+          "mode": "list",
+          "cachedResultName": "Servicios",
+          "cachedResultUrl": "https://airtable.com/appt3DflnEnQ2rFph/tbl20zkocgV5ORKNM"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Duración (minutos)": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Duraci_n__minutos_', ``, 'number') }}",
+            "Precio (Euros)": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Precio__Euros_', ``, 'number') }}",
+            "id": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('id__using_to_match_', ``, 'string') }}",
+            "Nombre del Servicio": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Nombre_del_Servicio', ``, 'string') }}",
+            "Especialista": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Especialista', ``, 'string') }}",
+            "Disponibilidad": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Disponibilidad', ``, 'string') }}",
+            "Link de Reserva": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Link_de_Reserva', ``, 'string') }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Nombre del Servicio",
+              "displayName": "Nombre del Servicio",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Tipo",
+              "displayName": "Tipo",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Masaje",
+                  "value": "Masaje"
+                },
+                {
+                  "name": "Terapia Energética",
+                  "value": "Terapia Energética"
+                },
+                {
+                  "name": "Clase Grupal",
+                  "value": "Clase Grupal"
+                },
+                {
+                  "name": "Terapia Manual",
+                  "value": "Terapia Manual"
+                },
+                {
+                  "name": "Terapia Alternativa",
+                  "value": "Terapia Alternativa"
+                },
+                {
+                  "name": "Terapia Tradicional",
+                  "value": "Terapia Tradicional"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Duración (minutos)",
+              "displayName": "Duración (minutos)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Precio (Euros)",
+              "displayName": "Precio (Euros)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Especialista",
+              "displayName": "Especialista",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Disponibilidad",
+              "displayName": "Disponibilidad",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "options": [
+                {
+                  "name": "Lunes a Viernes",
+                  "value": "Lunes a Viernes"
+                },
+                {
+                  "name": "Martes y Jueves",
+                  "value": "Martes y Jueves"
+                },
+                {
+                  "name": "Lunes",
+                  "value": "Lunes"
+                },
+                {
+                  "name": "Miércoles y Viernes",
+                  "value": "Miércoles y Viernes"
+                },
+                {
+                  "name": "Lunes a Sábado",
+                  "value": "Lunes a Sábado"
+                },
+                {
+                  "name": "Todos los días",
+                  "value": "Todos los días"
+                },
+                {
+                  "name": "Martes",
+                  "value": "Martes"
+                },
+                {
+                  "name": "Jueves y Sábado",
+                  "value": "Jueves y Sábado"
+                },
+                {
+                  "name": "Lunes y Viernes",
+                  "value": "Lunes y Viernes"
+                },
+                {
+                  "name": "Sábados y Domingos",
+                  "value": "Sábados y Domingos"
+                },
+                {
+                  "name": "Viernes y Domingo",
+                  "value": "Viernes y Domingo"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Ubicación",
+              "displayName": "Ubicación",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Sala 1",
+                  "value": "Sala 1"
+                },
+                {
+                  "name": "Sala 2",
+                  "value": "Sala 2"
+                },
+                {
+                  "name": "Sala Yoga",
+                  "value": "Sala Yoga"
+                },
+                {
+                  "name": "Sala 3",
+                  "value": "Sala 3"
+                },
+                {
+                  "name": "Sala Zen",
+                  "value": "Sala Zen"
+                },
+                {
+                  "name": "Sala Pilates",
+                  "value": "Sala Pilates"
+                },
+                {
+                  "name": "Sala Terapias",
+                  "value": "Sala Terapias"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Link de Reserva",
+              "displayName": "Link de Reserva",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        240,
+        240
+      ],
+      "id": "59a664e8-4715-44cf-83fe-fd74f20013a9",
+      "name": "ActualizarRegistros",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "S91DRU0IxI6kIZjm",
+          "name": "Airtable Token CentroBienestar"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "ObtenerRegistros": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CrearRegistro": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ActualizarRegistros": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "65bf8432-844f-4e69-b197-88350a24b14d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "441974d4e0f72ec45c8b7dfa5e703be3b4cc1bd2f5d4b0f5cc7ce971159ca7cb"
+  },
+  "id": "OGGGAs4ssOm6gf2k",
+  "tags": []
+}
