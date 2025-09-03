@@ -1,4 +1,4 @@
-# 🤖 MCP-n8n Workflow
+# 🤖 Personal-Assistant-MCP-n8n Workflow
 
 Workflow built in **n8n** that creates a conversational AI agent capable of responding to chat messages and invoking external tools (Airtable, Gmail) through **MCP (Model Context Protocol)**.  
 
